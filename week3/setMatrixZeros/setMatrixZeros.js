@@ -46,9 +46,31 @@ CONSTRAINTS
     3) 1 <= m, n <= 200
     4) -2^31 <= matrix[i][j] <= 2^31 - 1
 
-  
+
 */
 
 var setMatrixZeros = function(matrix) {
-    
+    // m index for row for zero
+    // var zeroRow;
+    // n index for column for zero
+    var zeroColumn;
+    // last index of entire matrix
+    let lastRow = matrix.length - 1;
+    let lastColumn = matrix[0].length - 1;
+
+    let checkMatrixZeros = function (row) {
+        for (let i = 0; i < row.length; i++) {
+            let column = row[i];
+            if (column === 0) {
+                zeroColumn = i;
+                row = row.map((column) => column = 0);
+                i = row.length;
+            }
+        }
+    }
+
+    return matrix;
+
 };
+// we need to keep track of m index to reset all element to zero
+// we need to keep track n index to reset each element in every row with the same n index (column)
