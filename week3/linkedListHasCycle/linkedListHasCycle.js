@@ -57,6 +57,54 @@ CONSTRAINTS
 */
 
 var linkedListHasCycle = function(head) {
-    
-    
+    // create node1 = head;
+    let node1 = head;
+    // node2 variables = head.next;
+    let node2 = head.next;
+    // hasCycle = false
+    let hasCycle = false;
+    // debugger;
+    while (node1.val !== node2.val && node2.next) {
+      node1 = node1.next;
+      node2 = node2.next.next;
+      if (node1.val === node2.val) {
+        hasCycle = true;
+      }
+
+    }
+    // while node1.val and node2.val are not equal and either node1/ node2 not equal to undefined
+      // node1 = node1.next;
+      // node2 = node2.next.next;
+      // if node1 === node2
+        // hasCycle = true;
+
+    return hasCycle;
+
 };
+
+var linkedListNode = function (val, next) {
+  this.val = val ? val : undefined;
+  this.next = next ? next : null;
+}
+
+let A = new linkedListNode(1);
+let B = new linkedListNode(2);
+let C = new linkedListNode(3);
+let D = new linkedListNode(4);
+A.next = B;
+B.next = C;
+C.next = D;
+D.next = B;
+
+let E = new linkedListNode(1);
+let F = new linkedListNode(2);
+let G = new linkedListNode(3);
+let H = new linkedListNode(4);
+E.next = F;
+F.next = G;
+G.next = H;
+
+console.log(linkedListHasCycle(A));
+console.log(linkedListHasCycle(E));
+
+
