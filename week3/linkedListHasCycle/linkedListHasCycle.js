@@ -72,14 +72,8 @@ var linkedListHasCycle = function(head) {
       }
 
     }
-    // while node1.val and node2.val are not equal and either node1/ node2 not equal to undefined
-      // node1 = node1.next;
-      // node2 = node2.next.next;
-      // if node1 === node2
-        // hasCycle = true;
 
     return hasCycle;
-
 };
 
 var linkedListNode = function (val, next) {
