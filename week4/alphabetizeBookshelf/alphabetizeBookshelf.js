@@ -22,13 +22,32 @@ solution using at least two different algos.
 */
 
 // WEEK 4, DAY 1
-var alphabetizeBookshelf1 = function() {
-    
+var alphabetizeBookshelf1 = function(books) {
+    let isUnsorted = false;
+
+    for (let i = 0; i < books.length; i++) {
+      let currentElement = books[i];
+      let nextElement = books[i + 1];
+      if (currentElement > nextElement) {
+        isUnsorted = true;
+        books[i] = nextElement;
+        books[i + 1] = currentElement;
+      }
+    }
+
+    if (isUnsorted) {
+      alphabetizeBookshelf1(books);
+    }
+
+    return books;
 };
 
 
 // WEEK 4, DAY 2
 var alphabetizeBookshelf2 = function() {
-    
+
 };
 
+let testBookShelf1 = ['e', 'r', 't', 'e', 'd', 'b', 'x', 'a', 'h', 'n', 's', 'w', 'z', 'x', 'i', 'o', 'u', 'g'];
+
+console.log(alphabetizeBookshelf1(testBookShelf1));
