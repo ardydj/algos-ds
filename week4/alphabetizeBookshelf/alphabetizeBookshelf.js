@@ -44,7 +44,50 @@ var alphabetizeBookshelf1 = function(books) {
 
 
 // WEEK 4, DAY 2
-var alphabetizeBookshelf2 = function() {
+var insertionSort = function(half) {
+  let insertElIndex = half.length - 1;
+    for (let i = insertElIndex; i >= 0; i--) {
+      let currentElement = half[insertElIndex];
+      let prevElement = half[insertElIndex - 1];
+
+      if (prevElement > currentElement) {
+        half[] = currentElement;
+      }
+    }
+  }
+}
+
+var alphabetizeBookshelf2 = function(books) {
+  // create split point
+  let splitPointIndex = Math.floor(Math.random() * books.length);
+  // create both halfs
+  let firstHalf = [];
+  let secondHalf = [];
+
+  // assign each book to a bucket
+  for (let i = 0; i < books.length; i++) {
+    i === splitPointIndex ? i++ : i;
+    let currentBook = books[i];
+    if (currentBook < books[splitPointIndex]) {
+      firstHalf.push(currentBook);
+    } else {
+      secondHalf.push(currentBook);
+    }
+  }
+
+  if (firstHalf.length > 3) {
+    alphabetizeBookshelf2(firstHalf);
+  } else {
+    insertionSort(firstHalf);
+  }
+
+  if (secondHalf.length > 3) {
+    alphabetizeBookshelf2(secondHalf);
+  } else {
+
+  }
+
+  return firstHalf.concat(secondHalf).splice(splitPointIndex, 0, books[splitPointIndex]);
 
 };
 
