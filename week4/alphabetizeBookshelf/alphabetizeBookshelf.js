@@ -52,6 +52,7 @@ var insertionSort = function(half) {
 
       if (prevElement > currentElement) {
         half[] = currentElement;
+        // need to recursively insert element to array
       }
     }
   }
