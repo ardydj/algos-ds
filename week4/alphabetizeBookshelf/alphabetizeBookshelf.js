@@ -45,16 +45,21 @@ var alphabetizeBookshelf1 = function(books) {
 
 // WEEK 4, DAY 2
 var insertionSort = function(half) {
-  let insertElIndex = half.length - 1;
-    for (let i = insertElIndex; i >= 0; i--) {
-      let currentElement = half[insertElIndex];
-      let prevElement = half[insertElIndex - 1];
+  if (half.length > 2) {
+    lastIndex = half.length - 1;
+    let halfSlice = insertionSort(half.slice(0, lastIndex));
+    halfSlice.push(half[lastIndex]);
 
-      if (prevElement > currentElement) {
-        half[] = currentElement;
-        // need to recursively insert element to array
-      }
+    for (let i = ) {}
+  }
+
+  if (half.length === 2) {
+    let [firstEl, secondEl] = half;
+    if (firstEl > secondEl) {
+      half[0] = secondEl;
+      half[1] = firstEl;
     }
+    return half;
   }
 }
 
