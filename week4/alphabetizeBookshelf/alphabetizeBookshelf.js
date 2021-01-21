@@ -49,11 +49,23 @@ var insertionSort = function(half) {
     lastIndex = half.length - 1;
     let halfSlice = insertionSort(half.slice(0, lastIndex));
     halfSlice.push(half[lastIndex]);
+    insertedElIndex = lastIndex;
 
-    for (let i = ) {}
+    for (let i = lastIndex - 1; i >= 0; i--) {
+      // You need to keep track of inserted element not simply last element
+      let insertedEl = halfSlice[insertedElIndex];
+      let currentElement = halfSlice[i];
+
+      if (currentElement > insertedEl) {
+        halfSlice[i] = insertedEl;
+        halfSlice[insertedElIndex] = currentElement;
+        insertedElIndex = i;
+      }
+    }
+    return halfSlice;
   }
 
-  if (half.length === 2) {
+  if (half.length <= 2) {
     let [firstEl, secondEl] = half;
     if (firstEl > secondEl) {
       half[0] = secondEl;
@@ -65,11 +77,11 @@ var insertionSort = function(half) {
 
 var alphabetizeBookshelf2 = function(books) {
   // create split point
-  let splitPointIndex = Math.floor(Math.random() * books.length);
+  let splitPointIndex = Math.floor(Math.random() * (books.length - 1) + 1);
   // create both halfs
   let firstHalf = [];
   let secondHalf = [];
-
+  debugger;
   // assign each book to a bucket
   for (let i = 0; i < books.length; i++) {
     i === splitPointIndex ? i++ : i;
@@ -80,23 +92,28 @@ var alphabetizeBookshelf2 = function(books) {
       secondHalf.push(currentBook);
     }
   }
-
+  debugger;
   if (firstHalf.length > 3) {
     alphabetizeBookshelf2(firstHalf);
+    firstHalf = insertionSort(firstHalf);
+    debugger;
   } else {
-    insertionSort(firstHalf);
+    firstHalf = insertionSort(firstHalf);
   }
 
   if (secondHalf.length > 3) {
     alphabetizeBookshelf2(secondHalf);
+    insertionSort(secondHalf);
   } else {
-
+    insertionSort(secondHalf);
   }
 
-  return firstHalf.concat(secondHalf).splice(splitPointIndex, 0, books[splitPointIndex]);
+  firstHalf.concat(secondHalf).splice(splitPointIndex, 0, books[splitPointIndex]);
+  debugger;
+  return firstHalf;
 
 };
 
 let testBookShelf1 = ['e', 'r', 't', 'e', 'd', 'b', 'x', 'a', 'h', 'n', 's', 'w', 'z', 'x', 'i', 'o', 'u', 'g'];
 
-console.log(alphabetizeBookshelf1(testBookShelf1));
+console.log(alphabetizeBookshelf2(testBookShelf1));
