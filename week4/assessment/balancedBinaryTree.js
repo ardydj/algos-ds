@@ -14,6 +14,10 @@ function TreeNode(val, left, right) {
 
 var checkChildNode = function (node, side) {
 
+  if (!node) {
+    return side;
+  }
+
   if (!node.left && !node.right) {
     return side;
   }
@@ -28,10 +32,10 @@ var checkChildNode = function (node, side) {
 }
 
 var isBalanced = function(root) {
-  // debugger;
+
   let left = 0;
   let right = 0;
-  if (!root.left && !root.right) {
+  if (!root) {
       return true;
   }
 
@@ -41,13 +45,16 @@ var isBalanced = function(root) {
     left = checkChildNode(root.left, left);
     right = checkChildNode(root.right, right);
   }
-  // debugger;
+
   if (Math.abs(left - right) > 1) {
     return false
   } else {
     return true;
   }
+
 };
+
+
 
 let root1 = new TreeNode(1, 2, 2);
 root1.left = new TreeNode(2, 3, 3);

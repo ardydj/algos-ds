@@ -27,8 +27,13 @@ below, but feel free to use your own solution.
 
 */
 
-var idealPivot = function () {
+var idealPivot = function (books) {
+    if (books.length === 0) {
+        return books[0];
+    }
 
+    let pivotIndex = Math.floor(books.length / 2) - 1;
+    return pivotIndex;
 }
 
 // W4D2 solution
@@ -36,12 +41,17 @@ var alphabetizeBookshelf = function (books) {
     if (books.length < 2) return books;
 
     //replace this random pivot assignment with your own helper function (idealPivot)
-    let pivot = books[0];
+    let pivotIndex = idealPivot(books);
+    let pivot = books[pivotIndex];
 
     let lowerBooks = [];
     let higherBooks = [];
 
-    for (let i = 1; i < books.length; i++) {
+    for (let i = 0; i < books.length; i++) {
+        if (i === pivotIndex) {
+            i++;
+        }
+
         if (books[i] > pivot) {
             higherBooks.push(books[i]);
         } else {
@@ -50,3 +60,7 @@ var alphabetizeBookshelf = function (books) {
     }
     return alphabetizeBookshelf(lowerBooks).concat(pivot, alphabetizeBookshelf(higherBooks));
 };
+
+let books1 = ['t', 'r', 'y', 'x', 'j', 'l', 's', 'f', 'b'];
+
+console.log(alphabetizeBookshelf(books1));
