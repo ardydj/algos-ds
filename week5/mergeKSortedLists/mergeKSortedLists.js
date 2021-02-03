@@ -80,7 +80,7 @@ var mergeKSortedLists1 = function(words, k) {
       allNodes.push(node);
     });
   }
-  // debugger;
+
   // sort all nodes collected
   allNodes = quickSortLists(allNodes);
   // instantiate new linkedList with sorted nodes in array
@@ -117,3 +117,4 @@ var quickSortLists = function(list) {
 let testListMergeSort = [[1,4,5],[1,3,4],[2,6]];
 let result = mergeKSortedLists1(testListMergeSort, 3);
 console.log(JSON.stringify(result))
+

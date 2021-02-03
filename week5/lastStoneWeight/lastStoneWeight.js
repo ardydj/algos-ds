@@ -41,24 +41,59 @@ CONSTRAINTS
   2) 1 <= stones[i] <= 1000
 
 */
+var MaxHeap = function(val, child1, child2) {
+  this.val = val === undefined ? 0 : val;
+  this.children = [child1, child2];
+};
+
+var createMaxHeap = function(stones) {
+  if (stones.length <= 1) {
+    return stones[0];
+  }
+  let leftChildArray = stones.slice(1);
+  leftChildArray.splice(1, 1);
+  console.log(leftChildArray)
+  let rightChildArray = stones.slice(2);
+  console.log('this is the right: ', rightChildArray)
+  return new MaxHeap(stones[0], createMaxHeap(leftChildArray), createMaxHeap(rightChildArray));
+}
+
+console.log(JSON.stringify(createMaxHeap([8, 7, 4, 2, 1, 1])))
+
 
 var lastStoneWeight = function(stones) {
-  let largest = 0;
-  let largestIndex = 0;
-  for (let i = 1; i < stones.length; i++) {
+  // sort stones in descending order with quick sort
+  // create largest variable
+  // iterate over stones and find largest stone
 
-    if (largest < stones[i]) {
-      largest = stones[i];
-      largestIndex = i;
+  // create node with largest stone and first child and second child with recursive call
+
+};
+
+var quickSortWeights = function(stones) {
+  let idealPivotIndex = Math.floor(stones.length / 2) - 1;
+  let pivotElement = stones[idealPivotIndex];
+  let left = [];
+  let right = [];
+
+  if (stones.length <= 1) {
+    // need to return empty array so that concat still works. Otherwise, concat will not work on undefined
+    return stones;
+  }
+
+  for (let i = 0; i < stones.length; i++) {
+    if (i === idealPivotIndex) {
+      i++;
     }
 
+    if (stones[i] > pivotElement) {
+      left.push(stones[i]);
+    } else {
+      right.push(stones[i]);
+    }
   }
-  let maxHeap = new MaxHeap();
-};
 
-var MaxHeap = function(val) {
-  this.val = val === undefined ? 0 : val;
-  this.children = [];
-};
+  return quickSortWeights(left).concat(pivotElement, quickSortWeights(right));
+}
 
-
+// console.log(quickSortWeights([2,7,4,1,8,1]));

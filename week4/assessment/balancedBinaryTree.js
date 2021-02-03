@@ -63,5 +63,5 @@ root1.left.left = new TreeNode(3, 4, 4);
 let root2= new TreeNode(3, 9, 20);
 root2.right = new TreeNode(20, 15, 7);
 
-console.log(isBalanced(root2))
-console.log(isBalanced(root1));
+console.log(isBalanced(root1))
+console.log(isBalanced(root2));
