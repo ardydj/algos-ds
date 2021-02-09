@@ -25,6 +25,7 @@ var pathSum = function (root, sum) {
      if (sum === root.val && root.left === null && root.right === null) {
           return true;
      }
+     debugger;
      return pathSum(root.left, sum - root.val) || pathSum(root.right, sum - root.val);
 };
 

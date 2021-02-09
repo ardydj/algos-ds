@@ -24,7 +24,7 @@ Given the below binary tree and sum = 22,
  /  \      \
 7    2      1
 
-return true, as there exist a root-to-leaf path 
+return true, as there exist a root-to-leaf path
 5 -> 4 -> 11 -> 2 which sum is 22.
 
 */
@@ -43,7 +43,33 @@ return true, as there exist a root-to-leaf path
  * @return {boolean}
  */
 
+var traverseTree = function(node, sum) {
+     debugger;
+     if (!node) {
+          return false;
+     }
+
+     if (node.val === sum && node.left === null && node.right === null) {
+        return true;
+     }
+
+     return traverseTree(node.left, sum - node.val) || traverseTree(node.right, sum - node.val)
+}
+
 var pathSum = function(root, sum) {
-    
+     return traverseTree(root, sum);
 };
 
+function TreeNode(val, left, right) {
+     this.val = (val===undefined ? 0 : val)
+     this.left = (left===undefined ? null : left)
+     this.right = (right===undefined ? null : right)
+}
+
+let root = new TreeNode(10, 4, 6);
+root.left = new TreeNode(4, 11, 8);
+root.left.left  = new TreeNode(11, 2, 4);
+root.right = new TreeNode(6, 3, 12);
+root.right.right  = new TreeNode(12, 15, 16);
+
+console.log(pathSum(root, 24));
