@@ -44,7 +44,7 @@ return true, as there exist a root-to-leaf path
  */
 
 var traverseTree = function(node, sum) {
-     debugger;
+     // debugger;
      if (!node) {
           return false;
      }
