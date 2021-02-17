@@ -40,9 +40,8 @@ let findEscapeRoomCode = function (wordList, keypads) {
   keypads.forEach((keypad, index) => {
     output[index] = 0;
     let keys = new Trie();
-    // debugger;
     keys.insert(keypad);
-    // debugger;
+
     wordList.forEach((word) => {
       keys.search(word, keypad) ? output[index]++ : output[index];
     })
@@ -54,7 +53,14 @@ let findEscapeRoomCode = function (wordList, keypads) {
 let wordList = ['APPLE', 'PLEAS', 'PLEASE'];
 let keypads = ['ALTPXYZ', 'AELPXYZ', 'ALEPXSZ', 'SALEPXZ', 'PBRUOSS'];
 
+let keypads2 = [];
+
+while (keypads2.length < 1000) {
+  keypads2 = keypads2.concat(keypads);
+}
+
+
 // object (keys were the first character, the required character) and the value was the filtered word bank
 // {a : [Apple, zebra, ...etc]}
 
-console.log(findEscapeRoomCode(wordList, keypads));
+console.log(findEscapeRoomCode(wordList, keypads2));
