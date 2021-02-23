@@ -31,9 +31,20 @@ var idealPivot = function (books) {
     if (books.length === 0) {
         return books[0];
     }
+    let midIndex = Math.floor(books.length / 2) - 1;
+    let lastIndex = books.length - 1;
+    let firstPivot = books[0];
+    let midPivot = books[midIndex];
+    let lastPivot = books[lastIndex];
+    let pivotArr = [firstPivot, midPivot, lastPivot].sort()
 
-    let pivotIndex = Math.floor(books.length / 2) - 1;
-    return pivotIndex;
+    if (pivotArr[1] === firstPivot) {
+        return 0;
+    } else if (pivotArr[1] === midPivot) {
+        return midIndex;
+    } else {
+        return lastIndex;
+    }
 }
 
 // W4D2 solution
@@ -41,6 +52,7 @@ var alphabetizeBookshelf = function (books) {
     if (books.length < 2) return books;
 
     //replace this random pivot assignment with your own helper function (idealPivot)
+    // debugger;
     let pivotIndex = idealPivot(books);
     let pivot = books[pivotIndex];
 
@@ -63,4 +75,6 @@ var alphabetizeBookshelf = function (books) {
 
 let books1 = ['t', 'r', 'y', 'x', 'j', 'l', 's', 'f', 'b'];
 
+console.time('timer');
 console.log(alphabetizeBookshelf(books1));
+console.timeEnd('timer');
