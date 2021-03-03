@@ -44,7 +44,7 @@ var uniqueOccurrences = function (arr) {
       occurrences[num] = 1;
     }
   })
-    // debugger;
+
   let uniqueOccurrence = new Set();
   for (key in occurrences) {
     if (uniqueOccurrence.has(occurrences[key])) {
