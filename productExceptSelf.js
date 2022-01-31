@@ -41,3 +41,20 @@ var productExceptSelf = function(head) {
 
 console.log(productExceptSelf([1, 2, 3, 4]));
 console.log(productExceptSelf([2, 0, 13]));
+
+var productExceptSelf2 = function(nums) {
+  const output = [];
+
+  nums.forEach((num, index) => {
+    const left = index > 0 ? nums.slice(0, index).reduce((acc, currentVal) => acc * currentVal) : 1;
+
+    const right = index < nums.length - 1 ? nums.slice(index + 1).reduce((acc, currentVal) => acc * currentVal) : 1;
+
+    output[index] = left * right;
+  })
+
+  return output;
+};
+
+console.log('second test: ', productExceptSelf2([1, 2, 3, 4]));
+console.log('second test: ', productExceptSelf2([2, 0, 13]));
