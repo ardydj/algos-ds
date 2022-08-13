@@ -50,3 +50,29 @@ var middleNode = function(head, index= 0) {
 
   return middleIndex;
   };
+
+// Will only work if linkedList contains sequential nums
+var middleNode2 = function(head) {
+  //     base case and edge case
+      if (!head.next) {
+  //         at the tail node, we can now calculate the midpoint
+          const middleNodeVal =  head.val % 2 > 0 ? Math.ceil(head.val / 2) : (head.val / 2) + 1;
+          return head.val === middleNodeVal ? head : middleNodeVal;
+      }
+
+  //     recurrence relation
+      const middleNodeVal = middleNode(head.next);
+
+      if (head.val === middleNodeVal) {
+  //         this will not be the last return call
+  //         you are just changing the value of middleIndex for previous calls in the call stask
+          return head
+      }
+
+  //     pass middleNodeVal to next call or return node if last call in the call stack
+      return middleNodeVal;
+};
+
+const head = {next: {next: {next: 2}}}
+
+console.log(head[['next']['next']['next']])
