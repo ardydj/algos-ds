@@ -75,4 +75,4 @@ var middleNode2 = function(head) {
 
 const head = {next: {next: {next: 2}}}
 
-console.log(head[['next']['next']['next']])
+console.log(head['next']['next']['next'])
